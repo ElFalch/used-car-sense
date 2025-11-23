@@ -8,37 +8,40 @@
 <div class="container">
   <div class="row">
     <div class="col"></div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>John</td>
-          <td>Doe</td>
-          <td>@social</td>
-        </tr>
-      </tbody>
-    </table>
-    {{weekdays}}
+    <form>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="checkDefault"
+        />
+        <label class="form-check-label" for="checkDefault">
+          {{weekdays}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="checkChecked"
+          checked
+        />
+        <label class="form-check-label" for="checkChecked">
+          {{weekdays}}
+        </label>
+      </div>
+
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="3 PM">3 PM</option>
+        <option value="4 PM">4 PM</option>
+        <option value="5 PM">5 PM</option>
+      </select>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
   </div>
 </div>
+
 {% endblock %}
