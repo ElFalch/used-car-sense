@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 from datetime import datetime, timedelta
 from .models import Appointment
+from django.views.generic import CreateView
 from django.contrib import messages
 
 def validWeekday(days):
@@ -38,3 +39,14 @@ def booking(request):
             'weekdays':weekdays,
             'validateWeekdays':validateWeekdays,
         })
+
+class BookingCreateView(CreateView):
+    model = Appointment
+    fields = ["day", "time"]
+    
+    def get_form(self, form_class=None):
+        """Adds custom placeholders and widgets to form"""
+        form = super().get_form(form_class)
+        form.fields['day'].widget.attrs = {'type': 'date', 'data-test': "test"}
+        return form
+    
