@@ -59,11 +59,9 @@
         <li class="list-inline-item">
             <a class="text-black nav-link" href="{% url 'contact' %}">
               <div class="text-center">
-              {% if request.user.is_authenticated %}
               <div><i class="fa-solid fa-envelope"></i></div>
               <p>Contact Us</p>
               </a>
-              {% endif %}
             </div>
           </li>
           <li class="list-inline-item dropdown">
