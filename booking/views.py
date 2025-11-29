@@ -47,6 +47,7 @@ class BookingCreateView(CreateView):
     def get_form(self, form_class=None):
         """Adds custom placeholders and widgets to form"""
         form = super().get_form(form_class)
-        form.fields['day'].widget.attrs = {'type': 'date', 'data-test': "test"}
+        form.fields['day'].widget.attrs = {'type': 'day'}
+        form.fields['time'].widget.attrs = {'type': 'time'}
         return form
     
