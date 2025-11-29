@@ -56,6 +56,16 @@
           </a>
         </div>
        <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+        <li class="list-inline-item">
+            <a class="text-black nav-link" href="{% url 'contact' %}">
+              <div class="text-center">
+              {% if request.user.is_authenticated %}
+              <div><i class="fa-solid fa-envelope"></i></div>
+              <p>Contact Us</p>
+              </a>
+              {% endif %}
+            </div>
+          </li>
           <li class="list-inline-item dropdown">
             <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
@@ -74,16 +84,6 @@
               {% else %}
               <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
               <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-              {% endif %}
-            </div>
-          </li>
-          <li class="list-inline-item">
-            <a class="text-black nav-link" href="{% url 'contact' %}">
-              <div class="text-center">
-              {% if request.user.is_authenticated %}
-              <div><i class="fa-solid fa-envelope"></i></div>
-              <p>Contact Us</p>
-              </a>
               {% endif %}
             </div>
           </li>
