@@ -18,11 +18,11 @@ TIME_CHOICES = (
 
 
 DATE_CHOICES = (
-    (str(datetime.now() + timedelta(1)), str(datetime.now() + timedelta(1))),
-    (str(datetime.now() + timedelta(2)), str(datetime.now() + timedelta(2))),
-    (str(datetime.now() + timedelta(3)), str(datetime.now() + timedelta(3))),
-    (str(datetime.now() + timedelta(4)), str(datetime.now() + timedelta(4))),
-    (str(datetime.now() + timedelta(5)), str(datetime.now() + timedelta(5))),
+    ((datetime.now() + timedelta(2)).strftime("%d.%m.%y"), (datetime.now() + timedelta(2)).strftime("%d.%m.%y")),
+    ((datetime.now() + timedelta(3)).strftime("%d.%m.%y"), (datetime.now() + timedelta(3)).strftime("%d.%m.%y")),
+    ((datetime.now() + timedelta(4)).strftime("%d.%m.%y"), (datetime.now() + timedelta(4)).strftime("%d.%m.%y")),
+    ((datetime.now() + timedelta(5)).strftime("%d.%m.%y"), (datetime.now() + timedelta(5)).strftime("%d.%m.%y")),
+    ((datetime.now() + timedelta(6)).strftime("%d.%m.%y"), (datetime.now() + timedelta(6)).strftime("%d.%m.%y")),
 )
 
 
