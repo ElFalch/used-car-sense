@@ -23,3 +23,10 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         form.fields['time'].widget.attrs = {'type': 'time'}
         return form
     
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        self.request.session['appointment'] = {'id': self.object.id, 'user': self.object.user.id}
+        print(self.request.session['appointment'])
+        return super().form_valid(form)
