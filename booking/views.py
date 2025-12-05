@@ -12,7 +12,7 @@ def booking(request):
     return render(booking, 'booking/appointment_form.html')
 
 
-class BookingCreateView(CreateView):
+class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Appointment
     fields = ["day", "time"]
     
