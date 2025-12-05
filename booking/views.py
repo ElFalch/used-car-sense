@@ -15,6 +15,7 @@ def booking(request):
 class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Appointment
     fields = ["day", "time"]
+    success_url = 'checkout'
     
     def get_form(self, form_class=None):
         """Adds custom placeholders and widgets to form"""
