@@ -33,7 +33,7 @@ def checkout(request):
         'order_form': order_form,
         'day': day,
         'time': time,
-        'stripe_public_key': 'pk_test_51SbNQP14T0kXCw0Oz2xjNqfZeTheSPlrM80RP4IstANuREGeSwl0ADUxRZGLyOw412KgkAckZ3v1SKS2s6kbco7L00TU0cxMsl',
+        'stripe_public_key': 'stripe_public_key',
     }
 
     return render(request, template, context)
