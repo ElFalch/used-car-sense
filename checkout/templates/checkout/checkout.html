@@ -18,13 +18,6 @@
           <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
                 <div class="row">
-                    <div class="col-7 offset-2">
-                        <p class="mb-1 mt-0 small text-muted">Day</p>
-                    </div>
-                    <div class="col-3 text-right">
-                        <p class="mb-1 mt-0 small text-muted">Time</p>
-                    </div>
-                </div>
                         <div class="col-7">
                             <p class="my-0"><strong>{{ day }}</strong></p>
                         </div>
@@ -32,7 +25,7 @@
                             <p class="my-0"><strong>{{ time }}</strong></p>
                         </div>
                         <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">"£20.00</p>
+                            <p class="my-0 small text-muted">£20.00</p>
                         </div>
                     </div>
                 </div>
@@ -43,18 +36,18 @@
                     {% csrf_token %}
                     <fieldset class="rounded px-3 mb-5">
                         <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
-                        {{ order_form.full_name | as_crispy_field }}
-                        {{ order_form.email | as_crispy_field }}
+                        {{ order_form.full_name}}
+                        {{ order_form.email}}
                     </fieldset>
                     <fieldset class="rounded px-3 mb-5">
                         <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
-                        {{ order_form.phone_number | as_crispy_field }}
-                        {{ order_form.country | as_crispy_field }}
-                        {{ order_form.postcode | as_crispy_field }}
-                        {{ order_form.town_or_city | as_crispy_field }}
-                        {{ order_form.street_address1 | as_crispy_field }}
-                        {{ order_form.street_address2 | as_crispy_field }}
-                        {{ order_form.county | as_crispy_field }}
+                        {{ order_form.phone_number}}
+                        {{ order_form.country}}
+                        {{ order_form.postcode}}
+                        {{ order_form.town_or_city}}
+                        {{ order_form.street_address1}}
+                        {{ order_form.street_address2}}
+                        {{ order_form.county}}
                         <div class="form-check form-check-inline float-right mr-0">
 							{% if user.is_authenticated %}
 								<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
