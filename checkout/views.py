@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.conf import settings
+
 from .forms import OrderForm
 
 def checkout(request):
@@ -8,7 +10,9 @@ def checkout(request):
     if not day:
         messages.error(request, "You haven't chosen an appointment")
         return redirect(reverse('booking'))
-    print(day)
+
+    stripe_total = 20
+
     order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = {
