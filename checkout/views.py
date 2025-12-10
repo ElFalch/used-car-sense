@@ -17,7 +17,8 @@ def checkout(request):
         messages.error(request, "You haven't chosen an appointment")
         return redirect(reverse('booking'))
 
-    stripe_total = 20
+    stripe_total = 3000
+
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
