@@ -10,10 +10,9 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-
-def checkout(request):
-    day = request.session.get('day', {});
-    time = request.session.get('time', {});
+    day = request.session.get('day', {})
+    time = request.session.get('time', {})
+    
     if not day:
         messages.error(request, "You haven't chosen an appointment")
         return redirect(reverse('booking'))
