@@ -9,13 +9,32 @@ import stripe
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-
-    day = request.session.get('day', {})
-    time = request.session.get('time', {})
-    
-    if not day:
-        messages.error(request, "You haven't chosen an appointment")
-        return redirect(reverse('booking'))
+    if request.method == 'POST':
+        form_data = {
+            'full_name': request.POST['full_name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'country': request.POST['country'],
+            'postcode': request.POST['postcode'],
+            'town_or_city': request.POST['town_or_city'],
+            'street_address1': request.POST['street_address1'],
+            'street_address2': request.POST['street_address2'],
+            'county': request.POST['county'],
+        }
+        order_form = OrderForm(form_data)
+        if order_form.is_valid():
+            order = order_form.save()
+            request.session['save_info'] = 'save-info' in request.POST
+            return redirect(reverse('checkout_success', args=[order.order_number]))
+        else:
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')
+    else:
+        day = request.session.get('day', {})
+        time = request.session.get('time', {})
+        if not day:
+            messages.error(request, "You haven't chosen an appointment")
+            return redirect(reverse('booking'))
 
     stripe_total = 3000
 
