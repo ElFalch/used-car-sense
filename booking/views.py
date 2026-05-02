@@ -1,21 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
-from django.views.generic import UpdateView
-from django.urls import reverse_lazy   
-from django.views.generic import DeleteView                                                                                                                                                                                                                                                              
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView
+from django.urls import reverse_lazy
 
-# Create your views here.
-
-from .models import Appointment
-from django.views.generic import CreateView
-
-
-def booking(request):
-    """ A view to return the index page """
-
-    return render(booking, 'booking/appointment_form.html')
-
+from .models import Appointment, TimeSlot
 
 class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Appointment
