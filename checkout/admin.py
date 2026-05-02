@@ -2,10 +2,6 @@ from django.contrib import admin
 from .models import Order
 
 
-class OrderDetailsAdminInline(admin.TabularInline):
-    model = OrderDetails
-
-
 class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderDetailsAdminInline,)
 
