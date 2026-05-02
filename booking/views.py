@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.views.generic import UpdateView
-from django.urls import reverse_lazy                                                                                                                                                                                                                                                                 
+from django.urls import reverse_lazy   
+from django.views.generic import DeleteView                                                                                                                                                                                                                                                              
 
 # Create your views here.
 
@@ -58,3 +59,12 @@ class BookingUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_queryset(self):
         return Appointment.objects.filter(user=self.request.user)
+
+
+class BookingDeleteView(LoginRequiredMixin, DeleteView):
+    model = Appointment
+    template_name = "booking/delete_booking.html"
+    success_url = reverse_lazy("my_bookings")
+
+    def get_queryset(self):
+        return Appointment.objects.filter(user=self.request.user)        
