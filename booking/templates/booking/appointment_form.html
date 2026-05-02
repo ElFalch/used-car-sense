@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col"></div>
     <form action="{% url 'booking' %}" method="POST">
-      {% csrf_token %} {{ form.day}} {{ form.time}}
+      {% csrf_token %} {{ form.timeslot }}
       <button type="submit" class="btn btn-primary">Next</button>
     </form>
   </div>
