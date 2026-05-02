@@ -11,12 +11,14 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
     success_url = '/checkout/'
 
     def get_form(self, form_class=None):
-        """Adds custom placeholders and widgets to form"""
         form = super().get_form(form_class)
-        form.fields['day'].widget.attrs = {'type': 'day'}
-        form.fields['time'].widget.attrs = {'type': 'time'}
+
+        # hide already booked slots
+        booked_slots = Appointment.objects.values_list('timeslot_id', flat=True)
+        form.fields['timeslot'].queryset = TimeSlot.objects.exclude(id__in=booked_slots)
+
         return form
-    
+
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
