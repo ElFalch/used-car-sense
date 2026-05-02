@@ -7,9 +7,9 @@ from .models import Appointment, TimeSlot
 
 class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Appointment
-    fields = ["day", "time"]
+    fields = ["timeslot"]
     success_url = '/checkout/'
-    
+
     def get_form(self, form_class=None):
         """Adds custom placeholders and widgets to form"""
         form = super().get_form(form_class)
