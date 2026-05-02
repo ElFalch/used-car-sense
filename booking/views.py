@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView                                                                                                                                                                                                                                                                 
 
 # Create your views here.
 
@@ -36,4 +37,11 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         'id': self.object.id
         }
         return super().form_valid(form)
-    
+
+class MyBookingsView(LoginRequiredMixin, ListView):
+    model = Appointment
+    template_name = "booking/my_bookings.html"
+    context_object_name = "appointments"
+
+    def get_queryset(self):
+        return Appointment.objects.filter(user=self.request.user).order_by("day", "time")
