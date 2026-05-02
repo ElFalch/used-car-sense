@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% load static %} {% block page_header %}
+<h2>Delete Booking</h2>
+
+<p>Are you sure you want to delete {{ object.day }} at {{ object.time }}?</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Yes, delete</button>
+</form>
+{% endblock %}
