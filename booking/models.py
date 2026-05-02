@@ -4,9 +4,7 @@ from datetime import datetime
 
 class TimeSlot(models.Model):
     day = models.DateField()
-    time = models.CharField(max_length=10)
-
-    is_booked = models.BooleanField(default=False)
+    time = models.TimeField()
 
     class Meta:
         constraints = [
