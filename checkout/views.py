@@ -75,18 +75,22 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
-    save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+
+    appointment_data = request.session.get('appointment')
+
+    if appointment_data:
+        appointment_obj = Appointment.objects.get(id=appointment_data['id'])
+
+        order.appointment = appointment_obj
+        order.save()
+
+        del request.session['appointment']
+
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
     
-    if 'day' in request.session:
-        del request.session['day']
-
-    if 'time' in request.session:
-        del request.session['time']
-
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
