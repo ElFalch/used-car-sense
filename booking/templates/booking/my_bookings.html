@@ -3,7 +3,7 @@
 
 {% for appt in appointments %}
 <div>
-  <p>{{ appt.day }} - {{ appt.time }}</p>
+  <p>{{ appt.timeslot.day }} - {{ appt.timeslot.day }}</p>
 
   <a href="{% url 'edit_booking' appt.pk %}">Edit</a>
   <a href="{% url 'delete_booking' appt.pk %}">Delete</a>
