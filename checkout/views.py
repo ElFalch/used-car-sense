@@ -32,7 +32,7 @@ def checkout(request):
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
-        appointment = request.session.get('appointment')
+        appointment_data = request.session.get('appointment')
 
         if not appointment_data:
             messages.error(request, "You haven't chosen an appointment")
