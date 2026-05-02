@@ -37,9 +37,11 @@ def checkout(request):
         if not appointment_data:
             messages.error(request, "You haven't chosen an appointment")
             return redirect('booking')
+        
+        appointment_obj = get_object_or_404(Appointment, id=appointment_data['id'])
 
-        day = appointment.get('day')
-        time = appointment.get('time')
+        day = appointment_obj.timeslot.day
+        time = appointment_obj.timeslot.time
         
         if not day:
             messages.error(request, "You haven't chosen an appointment")
