@@ -24,13 +24,9 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         self.object.user = self.request.user
         self.object.save()
 
-        self.request.session['appointment'] = {
-        'day': self.object.day,
-        'time': self.object.time,
-        'id': self.object.id
-        }
-        return super().form_valid(form)
+        self.request.session['appointment_id'] = self.object.id
 
+        return super().form_valid(form)
 
 class MyBookingsView(LoginRequiredMixin, ListView):
     model = Appointment
