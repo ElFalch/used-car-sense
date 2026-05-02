@@ -65,8 +65,7 @@ def checkout(request):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
-        'day': day,
-        'time': time,
+        'appointment': appointment_obj,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
@@ -82,7 +81,7 @@ def checkout_success(request, order_number):
     appointment_data = request.session.get('appointment')
 
     if appointment_data:
-        appointment_obj = Appointment.objects.get(id=appointment_data['id'])
+        appointment_obj = get_object_or_404(Appointment, id=appointment_data['id'])
 
         order.appointment = appointment_obj
         order.save()
