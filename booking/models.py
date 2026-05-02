@@ -1,29 +1,18 @@
-from django.db import models
-from datetime import datetime, timedelta 
-from django.contrib.auth.models import User
+class TimeSlot(models.Model):
+    day = models.DateField()
+    time = models.CharField(max_length=10)
 
-# Create your models here.
-TIME_CHOICES = (
-    ("3 PM", "3 PM"),
-    ("3:30 PM", "3:30 PM"),
-    ("4 PM", "4 PM"),
-    ("4:30 PM", "4:30 PM"),
-    ("5 PM", "5 PM"),
-    ("5:30 PM", "5:30 PM"),
-    ("6 PM", "6 PM"),
-    ("6:30 PM", "6:30 PM"),
-    ("7 PM", "7 PM"),
-    ("7:30 PM", "7:30 PM"),
-)
+    is_booked = models.BooleanField(default=False)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['day', 'time'], name='unique_timeslot')
+        ]
+        ordering = ['day', 'time']
 
-DATE_CHOICES = (
-    ((datetime.now() + timedelta(2)).strftime("%d.%m.%y"), (datetime.now() + timedelta(2)).strftime("%d.%m.%y")),
-    ((datetime.now() + timedelta(3)).strftime("%d.%m.%y"), (datetime.now() + timedelta(3)).strftime("%d.%m.%y")),
-    ((datetime.now() + timedelta(4)).strftime("%d.%m.%y"), (datetime.now() + timedelta(4)).strftime("%d.%m.%y")),
-    ((datetime.now() + timedelta(5)).strftime("%d.%m.%y"), (datetime.now() + timedelta(5)).strftime("%d.%m.%y")),
-    ((datetime.now() + timedelta(6)).strftime("%d.%m.%y"), (datetime.now() + timedelta(6)).strftime("%d.%m.%y")),
-)
+    def __str__(self):
+        status = "Booked" if self.is_booked else "Available"
+        return f"{self.day} | {self.time} ({status})"
 
 
 class Appointment(models.Model):
