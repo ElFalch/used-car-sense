@@ -17,7 +17,7 @@ class TimeSlot(models.Model):
 
 class Appointment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    timeslot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
+    timeslot = models.OneToOneField(TimeSlot, on_delete=models.CASCADE)
     time_ordered = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
