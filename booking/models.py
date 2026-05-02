@@ -21,4 +21,4 @@ class Appointment(models.Model):
     time_ordered = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return f"{self.user} | {self.timeslot.day} | {self.timeslot.time}"
+        return f"{self.user} | {self.timeslot}"
