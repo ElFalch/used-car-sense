@@ -4,6 +4,7 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order
+from booking.models import Appointment
 
 import stripe
 
