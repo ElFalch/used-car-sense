@@ -3,7 +3,6 @@ from .models import Order
 
 
 class OrderAdmin(admin.ModelAdmin):
-    inlines = (OrderDetailsAdminInline,)
 
     readonly_fields = ('date_ordered',
                        'grand_total',)
