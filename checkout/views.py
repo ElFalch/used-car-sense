@@ -31,8 +31,15 @@ def checkout(request):
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
-        day = request.session.get('day', {})
-        time = request.session.get('time', {})
+        appointment = request.session.get('appointment')
+
+        if not appointment:
+            messages.error(request, "You haven't chosen an appointment")
+            return redirect('booking')
+
+        day = appointment.get('day')
+        time = appointment.get('time')
+        
         if not day:
             messages.error(request, "You haven't chosen an appointment")
             return redirect(reverse('booking'))
