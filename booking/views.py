@@ -48,6 +48,19 @@ class BookingUpdateView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return Appointment.objects.filter(user=self.request.user)
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        # exclude booked slots except current one
+        booked_slots = Appointment.objects.exclude(
+            id=self.object.id
+        ).values_list('timeslot_id', flat=True)
+
+        form.fields['timeslot'].queryset = TimeSlot.objects.exclude(
+            id__in=booked_slots
+        )
+
+        return form
 
 class BookingDeleteView(LoginRequiredMixin, DeleteView):
     model = Appointment
