@@ -29,10 +29,11 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-        self.request.session['appointment'] = {'id': self.object.id, 'user': self.object.user.id}
-        self.request.session['day'] = self.object.day
-        self.request.session['time'] = self.object.time
-        print(self.request.session['appointment'])
-        print(self.request.session['day'])
+
+        self.request.session['appointment'] = {
+        'day': self.object.day,
+        'time': self.object.time,
+        'id': self.object.id
+        }
         return super().form_valid(form)
     
