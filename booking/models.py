@@ -13,9 +13,7 @@ class TimeSlot(models.Model):
         ordering = ['day', 'time']
 
     def __str__(self):
-        status = "Booked" if self.is_booked else "Available"
-        return f"{self.day} | {self.time} ({status})"
-
+        return f"{self.day} | {self.time}"
 
 class Appointment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
