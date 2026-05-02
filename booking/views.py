@@ -41,7 +41,7 @@ class MyBookingsView(LoginRequiredMixin, ListView):
 
 class BookingUpdateView(LoginRequiredMixin, UpdateView):
     model = Appointment
-    fields = ["day", "time"]
+    fields = ["timeslot"]
     template_name = "booking/edit_booking.html"
     success_url = reverse_lazy("my_bookings")
 
