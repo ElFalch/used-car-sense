@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
+from decimal import Decimal
 
 from .forms import OrderForm
 from .models import Order
@@ -11,6 +12,7 @@ import stripe
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    grand_total = Decimal('30.00')
     if request.method == 'POST':
         form_data = {
             'full_name': request.POST['full_name'],
@@ -25,7 +27,9 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            order.grand_total = grand_total
+            order.save()
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
@@ -47,7 +51,7 @@ def checkout(request):
             messages.error(request, "You haven't chosen an appointment")
             return redirect(reverse('booking'))
 
-    stripe_total = 3000
+    stripe_total = int(grand_total * 100)
 
     stripe.api_key = stripe_secret_key
 
