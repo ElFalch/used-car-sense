@@ -5,7 +5,7 @@ from .models import TimeSlot
 def generate_slots():
     start = date.today()
 
-    for i in range(2, 2000):  # next 5 days
+    for i in range(2, 200):  # next 200 days
         day = start + timedelta(days=i)
 
         for hour in range(15, 20):  # 3pm–7pm
