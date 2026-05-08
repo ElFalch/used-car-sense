@@ -11,10 +11,27 @@
       <br />
       <h3 class="logo-font">Choose an appointment from the menu below!</h3>
       <br />
-    <form action="{% url 'booking' %}" method="POST">
-      {% csrf_token %} {{ form.timeslot }}
-      <button type="submit" class="btn btn-primary">Next</button>
-    </form>
+      <form action="{% url 'booking' %}" method="POST">
+        {% csrf_token %} {{ form.timeslot }}
+        <button type="submit" class="btn btn-primary">Next</button>
+      </form>
+    </div>
+    <div class="col-12 col-lg-8 white-container">
+      <h2 class="text-black">What to Expect From Your Consultation</h2>
+      <br />
+      <p class="text-black logo-font">
+        Your consultation is the first step in planning a van conversion
+        tailored to your lifestyle, travel needs, and budget. During the
+        appointment, we’ll discuss layout ideas, storage solutions, electrical
+        options, finishes, and any features you’d like included in your build.
+      </p>
+      <br />
+      <p class="text-black logo-font">
+        We’ll also answer any questions you may have about the conversion
+        process, timelines, and pricing, helping you leave with a clear
+        understanding of the next steps for your project.
+      </p>
+    </div>
   </div>
 </div>
 
