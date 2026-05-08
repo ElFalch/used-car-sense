@@ -36,13 +36,13 @@ def checkout(request):
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
-        appointment_data = request.session.get('appointment_id')
+        appointment_id = request.session.get('appointment_id')
 
-        if not appointment_data:
+        if not appointment_id:
             messages.error(request, "You haven't chosen an appointment")
             return redirect('booking')
         
-        appointment_obj = get_object_or_404(Appointment, id=appointment_data['id'])
+        appointment_obj = get_object_or_404(Appointment, id=appointment_id)
 
         day = appointment_obj.timeslot.day
         time = appointment_obj.timeslot.time
