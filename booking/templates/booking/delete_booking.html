@@ -1,13 +1,15 @@
 {% extends "base.html" %} {% load static %} {% block page_header %}
 <h2>Delete Booking</h2>
 
-<p>
-  Are you sure you want to delete {{ appointment.timeslot.day }} at
-  {{appointment.timeslot.time}}?
-</p>
+<div class="col-12 col-lg-4 white-container">
+  <p>
+    Are you sure you want to delete {{ appointment.timeslot.day }} at
+    {{appointment.timeslot.time}}?
+  </p>
 
-<form method="post">
-  {% csrf_token %}
-  <button type="submit">Yes, delete</button>
-</form>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+  </form>
+</div>
 {% endblock %}
