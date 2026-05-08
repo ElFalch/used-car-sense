@@ -65,6 +65,17 @@ body {
   border: 1px solid black !important;
 }
 
+.text-red {
+  color: red;
+}
+
+.white-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
