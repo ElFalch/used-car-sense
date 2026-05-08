@@ -36,7 +36,7 @@ def checkout(request):
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
-        appointment_data = request.session.get('appointment')
+        appointment_data = request.session.get('appointment_id')
 
         if not appointment_data:
             messages.error(request, "You haven't chosen an appointment")
@@ -82,7 +82,7 @@ def checkout_success(request, order_number):
     """
     order = get_object_or_404(Order, order_number=order_number)
 
-    appointment_data = request.session.get('appointment')
+    appointment_data = request.session.get('appointment_id')
 
     if appointment_data:
         appointment_obj = get_object_or_404(Appointment, id=appointment_data['id'])
@@ -90,7 +90,7 @@ def checkout_success(request, order_number):
         order.appointment = appointment_obj
         order.save()
 
-        del request.session['appointment']
+        del request.session['appointment_id']
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
