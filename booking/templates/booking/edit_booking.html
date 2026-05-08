@@ -1,8 +1,10 @@
 {% extends "base.html" %} {% load static %} {% block page_header %}
 <h2>Edit Booking</h2>
 
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Save changes</button>
-</form>
+<div class="col-12 col-lg-4 white-container">
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Save changes</button>
+  </form>
+</div>
 {% endblock %}
