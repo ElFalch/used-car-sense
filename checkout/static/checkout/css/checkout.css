@@ -37,7 +37,15 @@
   right: 0.5rem;
 }
 
-#payment-form .form-control {
+#payment-form .form-control,
+#card-element {
   color: #000;
   border: 1px solid #000;
+}
+
+.checkout-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
