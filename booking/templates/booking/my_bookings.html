@@ -6,7 +6,7 @@
   <p>{{ appt.timeslot.day }} - {{ appt.timeslot.time }}</p>
 
   <a href="{% url 'edit_booking' appt.pk %}">Edit</a>
-  <a href="{% url 'delete_booking' appt.pk %}">Delete</a>
+  <a href="{% url 'delete_booking' appt.pk %}" class="text-red">Delete</a>
 </div>
 {% empty %}
 <p>No bookings found.</p>
