@@ -82,10 +82,10 @@ def checkout_success(request, order_number):
     """
     order = get_object_or_404(Order, order_number=order_number)
 
-    appointment_data = request.session.get('appointment_id')
+    appointment_id = request.session.get('appointment_id')
 
-    if appointment_data:
-        appointment_obj = get_object_or_404(Appointment, id=appointment_data['id'])
+    if appointment_id:
+        appointment_obj = get_object_or_404(Appointment, id=appointment_id)
 
         order.appointment = appointment_obj
         order.save()
