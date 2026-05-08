@@ -2,8 +2,8 @@
 <h2>My Bookings</h2>
 
 {% for appt in appointments %}
-<div>
-  <p>{{ appt.timeslot.day }} - {{ appt.timeslot.day }}</p>
+<div class="col-12 col-lg-4 white-container">
+  <p>{{ appt.timeslot.day }} - {{ appt.timeslot.time }}</p>
 
   <a href="{% url 'edit_booking' appt.pk %}">Edit</a>
   <a href="{% url 'delete_booking' appt.pk %}">Delete</a>
