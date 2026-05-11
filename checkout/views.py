@@ -6,6 +6,7 @@ from decimal import Decimal
 from .forms import OrderForm
 from .models import Order
 from booking.models import Appointment
+from .email import send_order_confirmation_email
 
 import stripe
 
@@ -91,6 +92,8 @@ def checkout_success(request, order_number):
         order.save()
 
         del request.session['appointment_id']
+
+    send_order_confirmation_email(order)
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
