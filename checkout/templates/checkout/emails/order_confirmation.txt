@@ -1,0 +1,17 @@
+Thank you for your booking!
+
+Your booking has been successfully confirmed.
+
+Order Number: {{ order.order_number }}
+
+Total Paid: £{{ order.grand_total }}
+
+{% if order.appointment %}
+Appointment Date:
+{{ order.appointment.timeslot.day }}
+
+Appointment Time:
+{{ order.appointment.timeslot.time }}
+{% endif %}
+
+We look forward to seeing you.
