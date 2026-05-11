@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Booking Confirmation</title>
+  </head>
+  <body>
+    <h2>Thank you for your booking!</h2>
+
+    <p>Your booking has been successfully confirmed.</p>
+
+    <hr />
+
+    <p>
+      <strong>Order Number:</strong>
+      {{ order.order_number }}
+    </p>
+
+    <p>
+      <strong>Total Paid:</strong>
+      £{{ order.grand_total }}
+    </p>
+
+    {% if order.appointment %}
+    <h3>Appointment Details</h3>
+
+    <p>
+      <strong>Date:</strong>
+      {{ order.appointment.timeslot.day }}
+    </p>
+
+    <p>
+      <strong>Time:</strong>
+      {{ order.appointment.timeslot.time }}
+    </p>
+    {% endif %}
+
+    <hr />
+
+    <p>We look forward to seeing you.</p>
+  </body>
+</html>
