@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
+from datetime import date
 
 from .models import Appointment, TimeSlot
 
@@ -15,7 +16,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
 
         # hide already booked slots
         booked_slots = Appointment.objects.values_list('timeslot_id', flat=True)
-        form.fields['timeslot'].queryset = TimeSlot.objects.exclude(id__in=booked_slots)
+        form.fields['timeslot'].queryset = TimeSlot.objects.filter(day__gt=date.today()).exclude(id__in=booked_slots)  # noqa
 
         return form
 
