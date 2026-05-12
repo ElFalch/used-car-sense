@@ -51,7 +51,10 @@ class BookingUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("my_bookings")
 
     def get_queryset(self):
-        return Appointment.objects.filter(user=self.request.user)
+        return Appointment.objects.filter(
+            user=self.request.user,
+            timeslot__day__gt=date.today()
+        )
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
