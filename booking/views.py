@@ -38,6 +38,9 @@ class MyBookingsView(LoginRequiredMixin, ListView):
         return Appointment.objects.filter(user=self.request.user).order_by(
             "timeslot__day", "timeslot__time"
         )
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["today"] = date.today()
 
 
 class BookingUpdateView(LoginRequiredMixin, UpdateView):
