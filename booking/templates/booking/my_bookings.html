@@ -4,9 +4,10 @@
 {% for appt in appointments %}
 <div class="col-12 col-lg-4 white-container">
   <p>{{ appt.timeslot.day }} - {{ appt.timeslot.time }}</p>
-
+  {% if appt.timeslot.day > today %}
   <a href="{% url 'edit_booking' appt.pk %}">Edit</a>
   <a href="{% url 'delete_booking' appt.pk %}" class="text-red">Delete</a>
+  {% endif %}
 </div>
 {% empty %}
 <p>No bookings found.</p>
