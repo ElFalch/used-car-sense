@@ -73,4 +73,7 @@ class BookingDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("my_bookings")
 
     def get_queryset(self):
-        return Appointment.objects.filter(user=self.request.user)
+        return Appointment.objects.filter(
+            user=self.request.user,
+            timeslot__day__gt=date.today()
+        )
