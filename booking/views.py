@@ -57,10 +57,7 @@ class BookingUpdateView(LoginRequiredMixin, UpdateView):
             id=self.object.id
         ).values_list('timeslot_id', flat=True)
 
-        form.fields['timeslot'].queryset = TimeSlot.objects.exclude(
-            id__in=booked_slots
-        )
-
+        form.fields['timeslot'].queryset = TimeSlot.objects.filter(day__gt=date.today()).exclude(id__in=booked_slots)  # noqa
         return form
 
 class BookingDeleteView(LoginRequiredMixin, DeleteView):
