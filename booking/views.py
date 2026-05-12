@@ -42,6 +42,7 @@ class MyBookingsView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context["today"] = date.today()
 
+        return context
 
 class BookingUpdateView(LoginRequiredMixin, UpdateView):
     model = Appointment
