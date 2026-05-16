@@ -9,4 +9,4 @@ def contact(request):
         form.save()
         return redirect("contact")
 
-    return render(request, "contact.html", {"form": form})
+    return render(request, "contact/contact.html", {"form": form})
