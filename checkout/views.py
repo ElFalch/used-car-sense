@@ -47,7 +47,6 @@ def checkout(request):
         appointment_obj = get_object_or_404(Appointment, id=appointment_id)
 
         day = appointment_obj.timeslot.day
-        time = appointment_obj.timeslot.time
         
         if not day:
             messages.error(request, "You haven't chosen an appointment")
