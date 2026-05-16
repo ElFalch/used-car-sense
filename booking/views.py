@@ -67,6 +67,7 @@ class BookingUpdateView(LoginRequiredMixin, UpdateView):
         form.fields['timeslot'].queryset = TimeSlot.objects.filter(day__gt=date.today()).exclude(id__in=booked_slots)  # noqa
         return form
 
+
 class BookingDeleteView(LoginRequiredMixin, DeleteView):
     model = Appointment
     template_name = "booking/delete_booking.html"
@@ -75,5 +76,6 @@ class BookingDeleteView(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         return Appointment.objects.filter(
             user=self.request.user,
+            status="confirmed",
             timeslot__day__gt=date.today()
         )
