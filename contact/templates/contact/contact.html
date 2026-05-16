@@ -7,39 +7,8 @@
 {% endblock %} {% block content %}
 <div class="container h-40">
   <div class="row h-100">
-    <form>
-      <div class="row">
-        <div class="col-12 col-lg-6 mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input
-            class="form-control sharp-corners"
-            id="name"
-            name="name"
-            type="text"
-            required
-          />
-        </div>
-        <div class="col-12 col-lg-6 mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input
-            class="form-control sharp-corners"
-            id="email"
-            name="email"
-            type="email"
-            required
-          />
-        </div>
-        <div class="col-12 mb-3">
-          <label for="message" class="form-label">Message</label>
-          <textarea
-            class="form-control sharp-corners"
-            rows="6"
-            id="message"
-            name="message"
-            required
-          ></textarea>
-        </div>
-      </div>
+    <form method="POST">
+      {% csrf_token %} {{ form.as_p }}
       <button type="submit" class="btn btn-light">Submit</button>
     </form>
   </div>
