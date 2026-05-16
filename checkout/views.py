@@ -90,9 +90,9 @@ def checkout_success(request, order_number):
     if appointment_id and not order.appointment:
 
         appointment_obj = get_object_or_404(
-        Appointment,
-        id=appointment_id
-    )
+            Appointment,
+            id=appointment_id
+        )
 
         order.appointment = appointment_obj
         order.save()
