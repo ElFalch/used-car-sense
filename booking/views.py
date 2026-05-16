@@ -35,7 +35,7 @@ class MyBookingsView(LoginRequiredMixin, ListView):
     context_object_name = "appointments"
 
     def get_queryset(self):
-        return Appointment.objects.filter(user=self.request.user).order_by(
+        return Appointment.objects.filter(user=self.request.user, status = "confirmed").order_by(
             "timeslot__day", "timeslot__time"
         )
     def get_context_data(self, **kwargs):
