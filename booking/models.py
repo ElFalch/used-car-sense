@@ -15,6 +15,7 @@ class TimeSlot(models.Model):
     def __str__(self):
         return f"{self.day} | {self.time}"
 
+
 class Appointment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timeslot = models.OneToOneField(TimeSlot, on_delete=models.CASCADE)
