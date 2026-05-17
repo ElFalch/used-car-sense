@@ -87,7 +87,7 @@
                 <p class="my-0">My Account</p>
               </div>
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+            <div class="dropdown-menu border-0">
               {% if request.user.is_authenticated %}
               <a href="{% url 'my_bookings' %}" class="dropdown-item">My Bookings</a>
               <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
