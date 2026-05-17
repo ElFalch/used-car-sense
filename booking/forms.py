@@ -8,5 +8,3 @@ class AppointmentForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-        booked = Appointment.objects.values_list('day', 'time')
