@@ -37,9 +37,12 @@
   right: 0.5rem;
 }
 
+legend {
+  display: none;
+}
+
 #payment-form .form-control,
 #card-element {
   color: #000;
   border: 1px solid #000;
 }
-
