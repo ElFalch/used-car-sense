@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-12 col-lg-4 appointment-form-container">
       <br />
-      <h3 class="logo-font">Choose an appointment from the menu below!</h3>
+      <h2 class="logo-font">Choose an appointment from the menu below!</h2>
       <br />
       <form action="{% url 'booking' %}" method="POST">
         {% csrf_token %} {{ form.timeslot }}
@@ -17,7 +17,7 @@
       </form>
     </div>
     <div class="col-12 col-lg-8 white-container">
-      <h2 class="text-black">What to Expect From Your Consultation</h2>
+      <h3 class="text-black">What to Expect From Your Consultation</h3>
       <br />
       <p class="text-black logo-font">
         Your consultation is the first step in planning a van conversion
