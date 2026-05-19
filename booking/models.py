@@ -31,6 +31,6 @@ class Appointment(models.Model):
         ],
         default="pending"
     )
-    
+
     def __str__(self):
         return f"{self.user} | {self.timeslot}"
