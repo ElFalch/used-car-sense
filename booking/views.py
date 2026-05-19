@@ -33,6 +33,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
 
+
 class MyBookingsView(LoginRequiredMixin, ListView):
     model = Appointment
     template_name = "booking/my_bookings.html"
