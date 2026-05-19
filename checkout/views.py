@@ -33,7 +33,12 @@ def checkout(request):
             order.grand_total = grand_total
             order.save()
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(
+                reverse(
+                    'checkout_success',
+                    args=[order.order_number]
+                )
+            )
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -43,11 +48,11 @@ def checkout(request):
         if not appointment_id:
             messages.error(request, "You haven't chosen an appointment")
             return redirect('booking')
-        
+
         appointment_obj = get_object_or_404(Appointment, id=appointment_id)
 
         day = appointment_obj.timeslot.day
-        
+
         if not day:
             messages.error(request, "You haven't chosen an appointment")
             return redirect(reverse('booking'))
@@ -97,7 +102,7 @@ def checkout_success(request, order_number):
         order.save()
 
         appointment_obj.status = "confirmed"
-        appointment_obj.save()       
+        appointment_obj.save()
 
         del request.session['appointment_id']
 
@@ -106,7 +111,7 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
-    
+
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
