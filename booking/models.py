@@ -8,7 +8,10 @@ class TimeSlot(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['day', 'time'], name='unique_timeslot')
+            models.UniqueConstraint(
+                fields=['day', 'time'],
+                name='unique_timeslot',
+            ),
         ]
         ordering = ['day', 'time']
 
