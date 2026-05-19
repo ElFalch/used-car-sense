@@ -6,6 +6,7 @@ from datetime import date
 
 from .models import Appointment, TimeSlot
 
+
 class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Appointment
     fields = ["timeslot"]
@@ -15,8 +16,11 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         form = super().get_form(form_class)
 
         # hide already booked slots
-        booked_slots = Appointment.objects.values_list('timeslot_id', flat=True)
-        form.fields['timeslot'].queryset = TimeSlot.objects.filter(day__gt=date.today()).exclude(id__in=booked_slots)  # noqa
+        booked_slots = Appointment.objects.values_list(
+            'timeslot_id',
+            flat=True)
+        form.fields['timeslot'].queryset = TimeSlot.objects.filter(
+            day__gt=date.today()).exclude(id__in=booked_slots)
 
         return form
 
@@ -35,14 +39,17 @@ class MyBookingsView(LoginRequiredMixin, ListView):
     context_object_name = "appointments"
 
     def get_queryset(self):
-        return Appointment.objects.filter(user=self.request.user, status = "confirmed").order_by(
+        return Appointment.objects.filter(
+            user=self.request.user, status="confirmed").order_by(
             "timeslot__day", "timeslot__time"
         )
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["today"] = date.today()
 
         return context
+
 
 class BookingUpdateView(LoginRequiredMixin, UpdateView):
     model = Appointment
