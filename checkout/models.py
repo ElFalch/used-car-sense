@@ -4,6 +4,7 @@ from django.db import models
 
 from booking.models import Appointment
 
+
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
     appointment = models.OneToOneField(
