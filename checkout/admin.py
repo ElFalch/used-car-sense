@@ -17,4 +17,5 @@ class OrderAdmin(admin.ModelAdmin):
 
     ordering = ('-date_ordered',)
 
+
 admin.site.register(Order, OrderAdmin)
