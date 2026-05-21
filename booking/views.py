@@ -37,7 +37,12 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
             "Please fill out the form below to confirm this booking"
         )
 
-        return super().form_valid(form)
+    def form_invalid(self, form):
+        messages.error(
+            self.request,
+            "There was a problem booking your appointment. Please try again."
+        )
+        return super().form_invalid(form)
 
 
 class MyBookingsView(LoginRequiredMixin, ListView):
