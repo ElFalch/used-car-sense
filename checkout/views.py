@@ -33,6 +33,13 @@ def checkout(request):
             order.grand_total = grand_total
             order.save()
             request.session['save_info'] = 'save-info' in request.POST
+
+            messages.success(
+                request,
+                "Payment details submitted successfully."
+                "Please review your order confirmation."
+            )
+
             return redirect(
                 reverse(
                     'checkout_success',
