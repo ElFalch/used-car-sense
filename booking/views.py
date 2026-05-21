@@ -33,7 +33,8 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
 
         messages.success(
             self.request,
-            "Your appointment has been booked successfully."
+            "Your appointment has been selected!"
+            "Please fill out the form below to confirm this booking"
         )
 
         return super().form_valid(form)
