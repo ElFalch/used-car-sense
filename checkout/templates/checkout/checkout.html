@@ -43,9 +43,6 @@
         <hr />
         <h2 class="logo-font mb-4 text-black">Payment</h2>
         <hr />
-        <p class="text-muted">
-          Please fill out the form below to complete your order
-        </p>
       </div>
       <form action="{% url 'checkout' %}" method="POST" id="payment-form">
         {% csrf_token %}
