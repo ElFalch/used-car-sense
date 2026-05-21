@@ -115,3 +115,10 @@ class BookingDeleteView(LoginRequiredMixin, DeleteView):
             user=self.request.user,
             timeslot__day__gt=date.today()
         )
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(
+            self.request,
+            "Your booking has been cancelled successfully."
+        )
+        return super().delete(request, *args, **kwargs)
