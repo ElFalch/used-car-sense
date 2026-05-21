@@ -36,7 +36,7 @@ def checkout(request):
 
             messages.success(
                 request,
-                "Payment details submitted successfully."
+                "Payment details submitted successfully. "
                 "Please review your order confirmation."
             )
 
