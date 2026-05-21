@@ -36,6 +36,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
             "Your appointment has been selected!"
             "Please fill out the form below to confirm this booking"
         )
+        return super().form_valid(form)
 
     def form_invalid(self, form):
         messages.error(
