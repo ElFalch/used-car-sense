@@ -80,6 +80,14 @@ class BookingUpdateView(LoginRequiredMixin, UpdateView):
 
         form.fields['timeslot'].queryset = TimeSlot.objects.filter(day__gt=date.today()).exclude(id__in=booked_slots)  # noqa
         return form
+    
+    def form_valid(self, form):
+        messages.success(
+            self.request,
+            "Your booking has been updated successfully."
+        )
+
+        return super().form_valid(form)
 
 
 class BookingDeleteView(LoginRequiredMixin, DeleteView):
