@@ -135,14 +135,22 @@
       </div>
     </header>
 
-    {% if messages %}
-    <div class="white-container">
-      {% for message in messages %}
-      <div>{{ message }}</div>
+    {% block page_header %} {% endblock %} {% if messages %}
+    <section id="alerts">
+      {% for msg in messages %}
+      <!-- all django message tags mirror bootstrap, except error/danger -->
+      <aside
+        class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} rounded-0 text-center"
+        role="alert"
+      >
+        <h2>{{ msg }}</h2>
+      </aside>
       {% endfor %}
-    </div>
-    {% endif %} {% block page_header %} {% endblock %}
-    <div></div>
-    {% block content %} {% endblock %} {% block postloadjs %} {% endblock %}
+    </section>
+    {% endif %}
+
+    <main>{% block content %} {% endblock %}</main>
+
+    {% block postloadjs %} {% endblock %}
   </body>
 </html>
