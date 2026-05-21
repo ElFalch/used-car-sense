@@ -31,6 +31,11 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
 
         self.request.session['appointment_id'] = self.object.id
 
+        messages.success(
+            self.request,
+            "Your appointment has been booked successfully."
+        )
+
         return super().form_valid(form)
 
 
