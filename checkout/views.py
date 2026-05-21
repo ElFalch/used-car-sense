@@ -47,8 +47,8 @@ def checkout(request):
                 )
             )
         else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
+            messages.error(request, "There was an error with your form. \
+                Please double check your information.")
     else:
         appointment_id = request.session.get('appointment_id')
 
@@ -76,8 +76,8 @@ def checkout(request):
     order_form = OrderForm()
 
     if not stripe_public_key:
-        messages.warning(request, 'Stripe public key is missing. \
-            Did you forget to set it in your environment?')
+        messages.warning(request, "Stripe public key is missing. \
+            Did you forget to set it in your environment?")
 
     template = 'checkout/checkout.html'
     context = {
@@ -115,9 +115,9 @@ def checkout_success(request, order_number):
 
     send_order_confirmation_email(order)
 
-    messages.success(request, f'Order successfully processed! \
+    messages.success(request, f"Order successfully processed! \
         Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+        email will be sent to {order.email}.")
 
     template = 'checkout/checkout_success.html'
     context = {
