@@ -13,7 +13,7 @@
       <br />
       <form action="{% url 'booking' %}" method="POST">
         {% csrf_token %} {{ form.timeslot }}
-        <button type="submit" class="btn btn-info">Next</button>
+        <button type="submit" class="btn btn-default">Next</button>
       </form>
     </div>
     <div class="col-12 col-lg-8">
