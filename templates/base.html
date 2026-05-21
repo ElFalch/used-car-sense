@@ -136,7 +136,11 @@
     </header>
 
     {% if messages %}
-    <div class="message-container"></div>
+    <div class="white-container">
+      {% for message in messages %}
+      <div>{{ message }}</div>
+      {% endfor %}
+    </div>
     {% endif %} {% block page_header %} {% endblock %}
     <div></div>
     {% block content %} {% endblock %} {% block postloadjs %} {% endblock %}
