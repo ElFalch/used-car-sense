@@ -13,8 +13,12 @@
   {% if appt.timeslot.day > today %}
   <a href="{% url 'edit_booking' appt.pk %}">Edit</a>
   <a href="{% url 'delete_booking' appt.pk %}" class="text-red">Delete</a>
+  {% else %}
+  <!-- Button to show which appointments have already been completed. Taken from a suggestion made by my mentor, Tim Nelson: https://www.github.com/TravelTimN -->
+  <button class="btn btn-warning btn-sm" disabled>Completed</button>
   {% endif %}
 </div>
+<hr />
 {% empty %}
 <p>No bookings found.</p>
 {% endfor %} {% endblock %}
